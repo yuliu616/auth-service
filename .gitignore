@@ -1,0 +1,20 @@
+# System Files
+Thumbs.db
+.DS_Store
+
+# IDEs and editors
+/.vs
+/.vscode
+/.idea
+*.iml
+
+# dependencies
+node_modules
+
+# compiled output
+out
+target
+
+# misc
+npm-debug.log
+log
