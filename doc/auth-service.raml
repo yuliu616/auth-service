@@ -1,0 +1,155 @@
+#%RAML 1.0
+title: auth-service REST API
+version: 1.0.x
+description: |
+  provide authentication by JWT token
+types:
+  LocalDate:
+    description: date without time, formatted like this `2017-10-24`.
+  DateTime:
+    description: instant of time without time zone concept.
+  Role:
+    description: refer to enum: com.yu.model.Role
+  LoginDto:
+    type: object
+    examples:
+      simple:
+        {
+          "username": "user123",
+          "password": "pass1234"
+        }
+  User:
+    type: object
+    examples:
+      simple:
+        {
+          "id": "1000012",
+          "version": 1,
+          "creationDate": "2020-11-30T02:43:11.856543Z",
+          "lastUpdated": "2020-11-30T02:43:11.856543Z",
+          "username": "user123",
+        }
+
+baseUri: http://localhost:8080/api/1.1
+
+/about:
+  get:
+    response:
+      200:
+        body:
+          application/json:
+            type: object
+            example: |
+              {
+                  "serviceName": "auth-service"
+                  "apiVersion": "1.0",
+                  "currentTime": "2020-11-30T02:43:11.856543Z",
+                  "currentDate": "2020-11-30",
+              }
+/signUp:
+  post:
+    description: |
+      registration(sign up) process, for new user to request for user record.
+    body: 
+      application/json:
+        type: LoginDto
+    response:
+      200:
+        body:
+          application/json:
+            type: User
+            example: |
+            {
+              "id": "10013",
+              "version": 1,
+              "creationDate": "2020-12-01T07:31:24Z",
+              "lastUpdated": "2020-12-01T07:31:24Z",
+              "username": "user120",
+              "active": true
+            }
+/login:
+  post:
+    body: 
+      application/json:
+        type: LoginDto
+    response:
+      200:
+        body:
+          application/json:
+            type: AuthToken
+            example: |
+              {
+                  "id_token": "",
+                  "access_token": "eyJhbGciOiJ...ZlxJ-BPWeKddGFjcU0Q",
+                  "refresh_token": "",
+                  "token_type": "Bearer"
+              }
+  /aboutMe:
+    get:
+      description: |
+        echo (and print to log) the claims of the authentication token.
+      responses: 
+        200:
+          body: 
+            application/json:
+              examples: |
+                {
+                  "username": "user123",
+                  "role": [
+                    "USER_ADMIN",
+                    "GENERAL_USER"
+                  ]
+                }
+  /refreshToken:
+    post:
+      description: |
+        re-create a new token (as a means of extending access period).
+      response:
+        200:
+          body:
+            application/json:
+              type: AuthRefreshDto
+              example: |
+                {
+                  "id_token": "",
+                  "access_token": "eyJhbGciOiJ...ZlxJ-BPWeKddGFjcU0Q",
+                  "token_type": "Bearer",
+                  "expires_in": 300
+                }
+/role:
+  /bind:
+    /{userId}:
+      post:
+        description: |
+          bind(assign) role to the provided user.
+        body: 
+          application/json:
+            type: Role[]
+            example: |
+             [
+               "USER_ADMIN",
+               "GENERAL_USER"
+             ]
+        responses:
+          200:
+          body:
+            application/json:
+              type: User
+  /unbind:
+    /{userId}:
+      post:
+        description: |
+          unbind(remove) role assignment from the provided user.
+        body: 
+          application/json:
+            type: Role[]
+            example: |
+             [
+               "USER_ADMIN",
+               "GENERAL_USER"
+             ]
+        responses:
+          200:
+          body:
+            application/json:
+              type: User

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yu.modelMapper.UserRoleMapper">
+  <select id="findAllRoleOfUser" parameterType="String" resultType="com.yu.model.Role">
+    select auth_user_role.role
+    from auth_user_role
+    where auth_user_role.user_id = #{userId}
+  </select>
+  <insert id="insertUserRoleAsEntries">
+    insert ignore into auth_user_role (
+      user_id, role)
+    values
+      <foreach item="item" index="index" collection="roleList"
+               open="" separator="," close="">
+        (#{userId}, #{item})
+      </foreach>
+  </insert>
+  <delete id="deleteUserRoleAsEntries">
+    delete from auth_user_role
+    where 0>1
+    <foreach item="item" index="index" collection="roleList"
+             open=" or " separator=" or " close="">
+      (user_id = #{userId} and role = #{item})
+    </foreach>
+  </delete>
+</mapper>

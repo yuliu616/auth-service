@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS `auth_user_id`;
+
+CREATE TABLE `auth_user_id` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=10001;

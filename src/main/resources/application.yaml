@@ -1,0 +1,35 @@
+server.port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/hellodb?useUnicode=true&characterEncoding=UTF-8&useSSL=false&noAccessToProcedureBodies=true
+    username: hellouser
+    password: pass1234
+    hikari:
+      maximum-pool-size: 100
+
+authService:
+  serviceName: auth-service
+  apiVersion: 1.0
+  apiBaseUrl: /api
+  modelMapperLocation: classpath:mapper/*-Mapper.xml
+  options:
+    echoLoginInfo: true
+  password:
+    charset: UTF-8
+    hashAlgo: SHA-256
+  jwt:
+    jwsAlgorithmName: ES256K
+    privateKey_PEM:
+      -----BEGIN PRIVATE KEY-----
+      MIGEAgEAMBAGByqGSM49AgEGBSuBBAAKBG0wawIBAQQgjZ+mQMBI3V/BRfTM4Rx2
+      0oiqtdUw7j6mPi5wg+AgROihRANCAAT4W3cDMH7EE1qgE5hTR+Pf6YCesz5pggDw
+      xVlX+zbyofqYZxR+uoacoy7u34RWZM/R/dEY53qw7UCeGyqQvMKt
+      -----END PRIVATE KEY-----
+    publicKey_PEM:
+      -----BEGIN PUBLIC KEY-----
+      MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAE+Ft3AzB+xBNaoBOYU0fj3+mAnrM+aYIA
+      8MVZV/s28qH6mGcUfrqGnKMu7t+EVmTP0f3RGOd6sO1AnhsqkLzCrQ==
+      -----END PUBLIC KEY-----
+    tokenValidTimeSec: 300
+    tokenIssuer: com.yu
