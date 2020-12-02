@@ -39,6 +39,14 @@ Some key configuration parameter:
 mvn spring-boot:run
 ```
 
+## Testing
+
+- mocha test
+```
+cd src/test/mocha-test
+npm test
+```
+
 ## Building
 
 ```
