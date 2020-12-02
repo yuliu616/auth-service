@@ -4,7 +4,6 @@ import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.yu.controller.JwtTokenController;
 import com.yu.model.Role;
-import com.yu.model.dto.AuthResultDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -49,7 +48,7 @@ public class JwtTokenBasedSecurityFilter implements Filter {
 //                logger.debug("token = {}", token);
 
                 JwtTokenController jwtTokenController = getJwtTokenController(request.getServletContext());
-                SignedJWT verifiedToken = jwtTokenController.verifyToken(new AuthResultDto(token));
+                SignedJWT verifiedToken = jwtTokenController.verifyToken(token);
                 if (verifiedToken == null){
                     logger.debug("token is invalid: {}", token);
                 } else {

@@ -15,6 +15,7 @@ authService:
   modelMapperLocation: classpath:mapper/*-Mapper.xml
   options:
     echoLoginInfo: true
+    enableDebugEndpoint: true
   password:
     charset: UTF-8
     hashAlgo: SHA-256

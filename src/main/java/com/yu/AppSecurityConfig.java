@@ -19,6 +19,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${authService.apiBaseUrl}")
     protected String apiBaseUrl;
 
+    @Value("${authService.options.enableDebugEndpoint}")
+    protected boolean enableDebugEndpoint;
+
     private static final Logger logger = LoggerFactory.getLogger(AppSecurityConfig.class);
 
     @Override
@@ -29,7 +32,13 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
 
-        // just open for all access
+        // access control for debug endpoints
+        if (this.enableDebugEndpoint) {
+            http.authorizeRequests()
+                    .antMatchers(apiBaseUrl+"/debug/**").permitAll();
+        }
+
+        // access control for endpoints
         http
             .authorizeRequests()
                 .antMatchers(apiBaseUrl+"/about")

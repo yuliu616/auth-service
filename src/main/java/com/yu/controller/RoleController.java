@@ -8,6 +8,7 @@ import com.yu.modelMapper.UserRoleMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,7 @@ public class RoleController {
 
     private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
 
+    @Transactional
     @PostMapping("/{userId}/bind")
     public User bindRoleToUser(@PathVariable("userId") String userId,
                                @RequestBody List<Role> roleList)
@@ -43,6 +45,7 @@ public class RoleController {
         return user;
     }
 
+    @Transactional
     @PostMapping("/{userId}/unbind")
     public User unbindRoleFromUser(@PathVariable("userId") String userId,
                                    @RequestBody List<Role> roleList)

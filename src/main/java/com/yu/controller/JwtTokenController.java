@@ -185,9 +185,9 @@ public class JwtTokenController {
     /**
      * @return token if verification passed, null for failure
      */
-    public SignedJWT verifyToken(AuthResultDto token) {
+    public SignedJWT verifyToken(String accessToken) {
         try {
-            SignedJWT parsedToken = SignedJWT.parse(token.access_token);
+            SignedJWT parsedToken = SignedJWT.parse(accessToken);
 //            logger.debug("token claim[username] = {}",
 //                    parsedToken.getJWTClaimsSet().getClaim("username"));
             boolean isTokenValid = parsedToken.verify(this.verifier);
@@ -213,7 +213,7 @@ public class JwtTokenController {
         try {
             AuthResultDto token = this.createLoginToken(
                     "user101", new Role[]{Role.ROOT_ADMIN, Role.USER_ADMIN});
-            SignedJWT verifiedToken = this.verifyToken(token);
+            SignedJWT verifiedToken = this.verifyToken(token.access_token);
             logger.info("token valid = {}, {}", verifiedToken!=null, verifiedToken);
         } catch (Exception ex) {
             logger.error("error in jwtSignTest: {}", ex.getMessage(), ex);
