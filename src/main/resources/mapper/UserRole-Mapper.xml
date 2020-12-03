@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yu.modelMapper.UserRoleMapper">
-  <select id="findAllRoleOfUser" parameterType="String" resultType="com.yu.model.Role">
+  <select id="findAllRoleOfUser" parameterType="String" resultType="String">
     select auth_user_role.role
     from auth_user_role
     where auth_user_role.user_id = #{userId}

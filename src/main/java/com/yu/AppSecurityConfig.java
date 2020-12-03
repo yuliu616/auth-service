@@ -52,9 +52,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(apiBaseUrl+"/login/refreshToken")
                     .authenticated()
                 .antMatchers(apiBaseUrl+"/role/*/bind")
-                    .hasAnyAuthority(Role.ROOT_ADMIN.name(), Role.ROLE_ADMIN.name())
+                    .hasAnyAuthority(Role.ROOT_ADMIN, Role.ROLE_ADMIN)
                 .antMatchers(apiBaseUrl+"/role/*/unbind")
-                    .hasAnyAuthority(Role.ROOT_ADMIN.name(), Role.ROLE_ADMIN.name())
+                    .hasAnyAuthority(Role.ROOT_ADMIN, Role.ROLE_ADMIN)
                 .anyRequest().denyAll()
         ;
 //        http.authorizeRequests().anyRequest().permitAll();

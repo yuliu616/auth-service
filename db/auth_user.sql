@@ -12,4 +12,4 @@ CREATE TABLE `auth_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE `auth_user`
-ADD UNIQUE INDEX `ix_auth_user_username` (`username` ASC);
+ADD INDEX `ix_auth_user_username` (`username` ASC);

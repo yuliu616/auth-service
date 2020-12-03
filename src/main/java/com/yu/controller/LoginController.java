@@ -53,9 +53,9 @@ public class LoginController {
         String passwordHash = this.passwordController.hashPassword(dto.getPassword(), dto);
         User found = this.userMapper.findUserWithPasswordMatched(username, passwordHash);
         if (found != null) {
-            List<Role> roleList = this.userRoleMapper.findAllRoleOfUser(found.getId());
+            List<String> roleList = this.userRoleMapper.findAllRoleOfUser(found.getId());
             AuthResultDto token = this.jwtTokenController.createLoginToken(
-                    username, roleList.toArray(new Role[0]));
+                    username, roleList.toArray(new String[0]));
             if (echoLoginInfo) {
                 logger.info("login: username = [{}], roleList = {}",
                         username, roleList);
@@ -69,7 +69,7 @@ public class LoginController {
     @GetMapping("/aboutMe")
     public Map<String, Object> aboutMe(){
         String username = currentAuthController.getCurrentUsername();
-        Role[] roleList = currentAuthController.getCurrentRoleList();
+        String[] roleList = currentAuthController.getCurrentRoleList();
         logger.info("aboutMe: username = [{}], roleList = {}",
                 username, roleList);
         Map<String, Object> map = new HashMap<>();

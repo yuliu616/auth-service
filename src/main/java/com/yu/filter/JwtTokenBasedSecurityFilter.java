@@ -78,13 +78,13 @@ public class JwtTokenBasedSecurityFilter implements Filter {
         try {
             JWTClaimsSet claimsSet = verifiedToken.getJWTClaimsSet();
             String username = jwtTokenController.getUsernameInToken(claimsSet);
-            Role[] roleList = jwtTokenController.getRoleListInToken(claimsSet);
+            String[] roleList = jwtTokenController.getRoleListInToken(claimsSet);
 //            logger.debug("user[{}] having roles: {}", username, roleList);
             Authentication auth = new UsernamePasswordAuthenticationToken(
                     username, null, //no password
                     Arrays.asList(roleList) //make the user have this role granted.
                             .stream()
-                            .map(role -> new SimpleGrantedAuthority(role.name()))
+                            .map(role -> new SimpleGrantedAuthority(role))
                             .collect(Collectors.toList())
             );
             return auth;

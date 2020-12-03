@@ -19,11 +19,11 @@ public class CurrentAuthController {
         return (String)auth.getPrincipal();
     }
 
-    public Role[] getCurrentRoleList() {
+    public String[] getCurrentRoleList() {
         UsernamePasswordAuthenticationToken auth = getCurrentAuth();
         return auth.getAuthorities().stream()
-                .map(a->Enum.valueOf(Role.class, a.getAuthority()))
-                .toArray(Role[]::new);
+                .map(a->a.getAuthority())
+                .toArray(String[]::new);
     }
 
     private UsernamePasswordAuthenticationToken getCurrentAuth(){

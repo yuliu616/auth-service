@@ -139,7 +139,7 @@ public class JwtTokenController {
         return publicKey;
     }
 
-    public AuthResultDto createLoginToken(String username, Role[] roleList){
+    public AuthResultDto createLoginToken(String username, String[] roleList){
         AuthResultDto dto = new AuthResultDto();
         this.createAuthToken(username, roleList, tokenStr -> {
             dto.access_token = tokenStr;
@@ -153,7 +153,7 @@ public class JwtTokenController {
      */
     public String createAuthRefreshToken(AuthRefreshDto dto){
         String username = currentAuthController.getCurrentUsername();
-        Role[] roleList = currentAuthController.getCurrentRoleList();
+        String[] roleList = currentAuthController.getCurrentRoleList();
         this.createAuthToken(username, roleList, tokenStr -> {
             dto.access_token = tokenStr;
             dto.expires_in = this.tokenValidTimeSec;
@@ -161,7 +161,7 @@ public class JwtTokenController {
         return username;
     }
 
-    private void createAuthToken(String username, Role[] roleList,
+    private void createAuthToken(String username, String[] roleList,
                                   Consumer<String> tokenConsumer)
     {
         try {
@@ -218,7 +218,7 @@ public class JwtTokenController {
     public void jwtSignTest(){
         try {
             AuthResultDto token = this.createLoginToken(
-                    "user101", new Role[]{Role.ROOT_ADMIN, Role.USER_ADMIN});
+                    "user101", new String[]{Role.ROOT_ADMIN});
             SignedJWT verifiedToken = this.verifyToken(token.access_token);
             logger.info("token valid = {}, {}", verifiedToken!=null, verifiedToken);
         } catch (Exception ex) {
@@ -230,11 +230,8 @@ public class JwtTokenController {
         return claimsSet.getStringClaim(CLAIM_FIELD_USERNAME);
     }
 
-    public Role[] getRoleListInToken(JWTClaimsSet claimsSet) throws ParseException {
-        Role[] roleList = Arrays.stream(claimsSet.getStringArrayClaim(CLAIM_FIELD_ROLE_LIST))
-                .map(r -> Enum.valueOf(Role.class, r))
-                .toArray(Role[]::new);
-        return roleList;
+    public String[] getRoleListInToken(JWTClaimsSet claimsSet) throws ParseException {
+        return claimsSet.getStringArrayClaim(CLAIM_FIELD_ROLE_LIST);
     }
 
 }

@@ -32,7 +32,7 @@ public class RoleController {
     @Transactional
     @PostMapping("/{userId}/bind")
     public User bindRoleToUser(@PathVariable("userId") String userId,
-                               @RequestBody List<Role> roleList)
+                               @RequestBody List<String> roleList)
     {
         logger.info("bindRoleToUser: user[{}] adding:{}", userId, roleList);
         User user = this.userMapper.findUserById(userId);
@@ -48,7 +48,7 @@ public class RoleController {
     @Transactional
     @PostMapping("/{userId}/unbind")
     public User unbindRoleFromUser(@PathVariable("userId") String userId,
-                                   @RequestBody List<Role> roleList)
+                                   @RequestBody List<String> roleList)
     {
         logger.info("unbindRoleFromUser: user[{}] removing:{}", userId, roleList);
         User user = this.userMapper.findUserById(userId);
