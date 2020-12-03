@@ -1,6 +1,7 @@
 import { default as axios } from 'axios';
 
 let numberOnlyPattern = /^[0-9]+$/;
+let generalLettersPattern = /^[a-zA-Z0-9\s\!\@\#\$\%\^\&\*\-\=\_\|\:\;\,\.\?\~\\\/\(\)\[\]\{\}\<\>]+$/;
 let localDatePattern = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
 let dateTimeNoZonePattern = /^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$/;
 let dateTimeAndMsNoZonePattern = /^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[.][0-9]*Z$/;
@@ -27,6 +28,7 @@ axios.interceptors.response.use(function (res) {
 
 export {
   numberOnlyPattern,
+  generalLettersPattern,
   localDatePattern,
   dateTimeNoZonePattern,
   dateTimeAndMsNoZonePattern,

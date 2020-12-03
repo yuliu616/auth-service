@@ -16,6 +16,7 @@ authService:
   options:
     echoLoginInfo: true
     enableDebugEndpoint: true
+    acceptExpiredAuthToken: false
   password:
     charset: UTF-8
     hashAlgo: SHA-256

@@ -28,6 +28,8 @@ A mirco-service for authentication and authorization. Authentication is done by 
 Some key configuration parameter:
 
 - `authService.options.echoLoginInfo`: if true, print debug info for every login process.
+- `authService.options.enableDebugEndpoint`: if true, expose debug-use(high risk) endpoint.
+- `authService.options.acceptExpiredAuthToken`: if true, auth token expiry time will be ignored.
 - `authService.jwt.privateKey_PEM`: private key (in PEM) for signing JWT token.
 - `authService.jwt.publicKey_PEM`: public key (in PEM) for verifying JWT token.
 - `authService.jwt.tokenValidTimeSec`: how long will a token become expired (in seconds).

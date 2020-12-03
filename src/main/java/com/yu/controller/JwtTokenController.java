@@ -63,6 +63,12 @@ public class JwtTokenController {
     @Value("${authService.jwt.tokenIssuer}")
     protected String tokenIssuer;
 
+    /**
+     * is enabled, token expiry time will be ignored
+     */
+    @Value("${authService.options.acceptExpiredAuthToken}")
+    protected boolean acceptExpiredAuthToken;
+
     private JWSHeader jwsHeader;
     private JWSSigner signer;
     private JWSVerifier verifier;
@@ -193,7 +199,7 @@ public class JwtTokenController {
             boolean isTokenValid = parsedToken.verify(this.verifier);
 //            logger.debug("verify valid ? {}", isTokenValid);
             Instant currentTime = this.currentTimeController.getCurrentTime();
-            if (currentTime.isAfter(
+            if (!acceptExpiredAuthToken && currentTime.isAfter(
                 parsedToken.getJWTClaimsSet().getExpirationTime().toInstant()))
             {
                 // token expired
