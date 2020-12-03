@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * expose some internal function for ease of debugging,
  * should be blocked in production version.
  */
-@RequestMapping("${authService.apiBaseUrl}/debug")
+@RequestMapping("${auth-service.api-base-url}/debug")
 @RestController
 public class DebugController {
 

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
-@RequestMapping("${authService.apiBaseUrl}/signUp")
+@RequestMapping("${auth-service.api-base-url}/signUp")
 @RestController
 public class SignUpController {
 

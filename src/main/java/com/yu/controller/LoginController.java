@@ -23,11 +23,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping("${authService.apiBaseUrl}/login")
+@RequestMapping("${auth-service.api-base-url}/login")
 @RestController
 public class LoginController {
 
-    @Value("${authService.options.echoLoginInfo}")
+    @Value("${auth-service.options.echo-login-info}")
     protected boolean echoLoginInfo;
 
     @Autowired

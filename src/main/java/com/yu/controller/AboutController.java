@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
-@RequestMapping("${authService.apiBaseUrl}/about")
+@RequestMapping("${auth-service.api-base-url}/about")
 @RestController
 public class AboutController {
 
-    @Value("${authService.serviceName}")
+    @Value("${auth-service.service-name}")
     protected String serviceName;
 
-    @Value("${authService.apiVersion}")
+    @Value("${auth-service.api-version}")
     protected String apiVersion;
 
     private static final Logger logger = LoggerFactory.getLogger(AboutController.class);

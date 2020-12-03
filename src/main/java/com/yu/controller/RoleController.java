@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping("${authService.apiBaseUrl}/role")
+@RequestMapping("${auth-service.api-base-url}/role")
 @RestController
 public class RoleController {
 

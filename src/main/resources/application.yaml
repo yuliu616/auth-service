@@ -8,30 +8,30 @@ spring:
     hikari:
       maximum-pool-size: 100
 
-authService:
-  serviceName: auth-service
-  apiVersion: 1.0
-  apiBaseUrl: /api
-  modelMapperLocation: classpath:mapper/*-Mapper.xml
+auth-service:
+  service-name: auth-service
+  api-version: 1.0
+  api-base-url: /api
+  model-mapper-location: classpath:mapper/*-Mapper.xml
   options:
-    echoLoginInfo: true
-    enableDebugEndpoint: true
-    acceptExpiredAuthToken: false
+    echo-login-info: true
+    enable-debug-endpoint: true
+    accept-expired-auth-token: false
   password:
     charset: UTF-8
-    hashAlgo: SHA-256
+    hash-algo: SHA-256
   jwt:
-    jwsAlgorithmName: ES256K
-    privateKey_PEM:
+    jws-algorithm-name: ES256K
+    private-key-PEM:
       -----BEGIN PRIVATE KEY-----
       MIGEAgEAMBAGByqGSM49AgEGBSuBBAAKBG0wawIBAQQgjZ+mQMBI3V/BRfTM4Rx2
       0oiqtdUw7j6mPi5wg+AgROihRANCAAT4W3cDMH7EE1qgE5hTR+Pf6YCesz5pggDw
       xVlX+zbyofqYZxR+uoacoy7u34RWZM/R/dEY53qw7UCeGyqQvMKt
       -----END PRIVATE KEY-----
-    publicKey_PEM:
+    public-key-PEM:
       -----BEGIN PUBLIC KEY-----
       MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAE+Ft3AzB+xBNaoBOYU0fj3+mAnrM+aYIA
       8MVZV/s28qH6mGcUfrqGnKMu7t+EVmTP0f3RGOd6sO1AnhsqkLzCrQ==
       -----END PUBLIC KEY-----
-    tokenValidTimeSec: 300
-    tokenIssuer: com.yu
+    token-valid-time-sec: 300
+    token-issuer: com.yu

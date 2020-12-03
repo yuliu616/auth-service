@@ -27,7 +27,7 @@ import java.util.Arrays;
 @SpringBootApplication
 public class Application {
 
-    @Value("${authService.modelMapperLocation}")
+    @Value("${auth-service.model-mapper-location}")
     private String modelMapperLocation;
 
     @Autowired

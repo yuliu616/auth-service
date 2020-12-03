@@ -18,13 +18,13 @@ public class PasswordController {
     /**
      * charset of a password (normally, only plain english + ascii symbols will be used)
      */
-    @Value("${authService.password.charset}")
+    @Value("${auth-service.password.charset}")
     protected String passwordCharset;
 
     /**
      * algorithm used to hash(digital digest) a password
      */
-    @Value("${authService.password.hashAlgo}")
+    @Value("${auth-service.password.hash-algo}")
     protected String passwordHashAlgo;
 
     private static final Logger logger = LoggerFactory.getLogger(PasswordController.class);

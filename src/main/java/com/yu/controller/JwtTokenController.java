@@ -42,31 +42,31 @@ import java.util.function.Consumer;
 @Component
 public class JwtTokenController {
 
-    @Value("${authService.jwt.jwsAlgorithmName}")
+    @Value("${auth-service.jwt.jws-algorithm-name}")
     protected String jwsAlgorithmName;
 
     /**
      * private key generated with EC256, in PEM format
      */
-    @Value("${authService.jwt.privateKey_PEM}")
+    @Value("${auth-service.jwt.private-key-PEM}")
     protected String privateKeyPem;
 
     /**
      * public key generated with EC256, in PEM format
      */
-    @Value("${authService.jwt.publicKey_PEM}")
+    @Value("${auth-service.jwt.public-key-PEM}")
     protected String publicKeyPem;
 
-    @Value("${authService.jwt.tokenValidTimeSec}")
+    @Value("${auth-service.jwt.token-valid-time-sec}")
     protected int tokenValidTimeSec;
 
-    @Value("${authService.jwt.tokenIssuer}")
+    @Value("${auth-service.jwt.token-issuer}")
     protected String tokenIssuer;
 
     /**
      * is enabled, token expiry time will be ignored
      */
-    @Value("${authService.options.acceptExpiredAuthToken}")
+    @Value("${auth-service.options.accept-expired-auth-token}")
     protected boolean acceptExpiredAuthToken;
 
     private JWSHeader jwsHeader;

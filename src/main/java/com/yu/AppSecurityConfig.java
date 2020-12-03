@@ -16,10 +16,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("${authService.apiBaseUrl}")
+    @Value("${auth-service.api-base-url}")
     protected String apiBaseUrl;
 
-    @Value("${authService.options.enableDebugEndpoint}")
+    @Value("${auth-service.options.enable-debug-endpoint}")
     protected boolean enableDebugEndpoint;
 
     private static final Logger logger = LoggerFactory.getLogger(AppSecurityConfig.class);
