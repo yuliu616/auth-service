@@ -56,6 +56,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(org.springframework.web.bind.MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> mvcValidationFailure(org.springframework.web.bind.MethodArgumentNotValidException exception){
         logger.warn("mvcValidationFailure: {}", exception.getMessage(), exception);
         return Collections.singletonMap("errorCode", ERROR_VALIDATION_ERROR);
