@@ -57,6 +57,7 @@ describe('login', function(){
     let resError = await axios.post(`${apiBaseUrl}/login`, data).then(res=>{
       return 'endpoint reject expected';
     }).catch(err=>{
+      expect(err.response.status).eq(400);
       return err.response.data;
     });
     expect(resError).is.an('object');
