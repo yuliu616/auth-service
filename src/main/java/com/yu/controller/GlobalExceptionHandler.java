@@ -1,6 +1,7 @@
 package com.yu.controller;
 
 import com.yu.exception.AuthenticationFailureException;
+import com.yu.exception.InconsistencyDataException;
 import com.yu.exception.RecordNotFoundException;
 import com.yu.exception.SecurityRiskException;
 import org.slf4j.Logger;
@@ -18,6 +19,8 @@ public class GlobalExceptionHandler {
 
 
     private static final String ERROR_AUTHENTICATION_ERROR = "AUTHENTICATION_ERROR";
+
+    private static final String ERROR_INVALID_USE_ERROR = "INVALID_USE_ERROR";
 
     private static final String ERROR_VALIDATION_ERROR = "VALIDATION_ERROR";
 
@@ -41,13 +44,6 @@ public class GlobalExceptionHandler {
         return Collections.singletonMap("errorCode", ERROR_INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(AuthenticationFailureException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, String> authenticationFail(AuthenticationFailureException exception){
-        logger.warn("authenticationFail: {}", exception.getMessage(), exception);
-        return Collections.singletonMap("errorCode", ERROR_AUTHENTICATION_ERROR);
-    }
-
     @ExceptionHandler(RecordNotFoundException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> recordNotFound(RecordNotFoundException exception){
@@ -60,6 +56,27 @@ public class GlobalExceptionHandler {
     public Map<String, String> mvcValidationFailure(org.springframework.web.bind.MethodArgumentNotValidException exception){
         logger.warn("mvcValidationFailure: {}", exception.getMessage(), exception);
         return Collections.singletonMap("errorCode", ERROR_VALIDATION_ERROR);
+    }
+
+    @ExceptionHandler(InconsistencyDataException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, String> invalidCallFailure(InconsistencyDataException exception){
+        logger.warn("invalidCallFailure: {}", exception.getMessage(), exception);
+        return Collections.singletonMap("errorCode", ERROR_INVALID_USE_ERROR);
+    }
+
+    @ExceptionHandler(org.springframework.http.converter.HttpMessageNotReadableException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, String> httpBodyParsingError(org.springframework.http.converter.HttpMessageNotReadableException exception){
+        logger.warn("httpBodyParsingError: {}", exception.getMessage(), exception);
+        return Collections.singletonMap("errorCode", ERROR_INVALID_USE_ERROR);
+    }
+
+    @ExceptionHandler(AuthenticationFailureException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, String> authenticationFail(AuthenticationFailureException exception){
+        logger.warn("authenticationFail: {}", exception.getMessage(), exception);
+        return Collections.singletonMap("errorCode", ERROR_AUTHENTICATION_ERROR);
     }
 
 }

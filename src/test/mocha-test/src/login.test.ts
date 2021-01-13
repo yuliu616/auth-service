@@ -26,7 +26,7 @@ describe('login', function(){
     // invoke signUp to create user
     let res = await axios.post(`${apiBaseUrl}/signUp`, data);
     expect(res.data).is.an('object');
-    expect(res.data.id).to.match(numberOnlyPattern);
+    expect(res.data.id).to.match(numberOnlyPattern).that.exist;
 
     data = {
       username: 'tester1001',
@@ -35,11 +35,11 @@ describe('login', function(){
     // login with the newly created user
     res = await axios.post(`${apiBaseUrl}/login`, data);
     expect(res.data).is.an('object');
-    expect(res.data.access_token).to.match(tokenPattern);
+    expect(res.data.access_token).to.match(tokenPattern).that.exist;
     expect(res.data.token_type).eq('Bearer');
   });
 
-  it('rejected for newly created user with incorrect password', async function(){
+  it('rejected for newly created user with incorrect password ooo', async function(){
     let data: any = {
       username: 'tester1001',
       password: 'pass1234',
@@ -47,7 +47,7 @@ describe('login', function(){
     // invoke signUp to create user
     let res = await axios.post(`${apiBaseUrl}/signUp`, data);
     expect(res.data).is.an('object');
-    expect(res.data.id).to.match(numberOnlyPattern);
+    expect(res.data.id).to.match(numberOnlyPattern).that.exist;
 
     data = {
       username: 'tester1001',
@@ -73,7 +73,7 @@ describe('login', function(){
     // invoke signUp to create user
     let res = await axios.post(`${apiBaseUrl}/signUp`, data);
     expect(res.data).is.an('object');
-    expect(res.data.id).to.match(numberOnlyPattern);
+    expect(res.data.id).to.match(numberOnlyPattern).that.exist;
 
     // login with the newly created user
     res = await axios.post(`${apiBaseUrl}/login`, data);
@@ -96,7 +96,7 @@ describe('login', function(){
     // invoke signUp to create user
     let res = await axios.post(`${apiBaseUrl}/signUp`, data);
     expect(res.data).is.an('object');
-    expect(res.data.id).to.match(numberOnlyPattern);
+    expect(res.data.id).to.match(numberOnlyPattern).that.exist;
 
     // login with the newly created user
     res = await axios.post(`${apiBaseUrl}/login`, data);
@@ -110,7 +110,7 @@ describe('login', function(){
     });
     expect(res.data).is.an('object');
     expect(res.data.access_token).to.not.eq(access_token);
-    expect(res.data.access_token).to.match(tokenPattern);
+    expect(res.data.access_token).to.match(tokenPattern).that.exist;
     expect(res.data.token_type).eq('Bearer');
     expect(res.data.expires_in).at.least(1);
   });
