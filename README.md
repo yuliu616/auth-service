@@ -14,6 +14,7 @@ A mirco-service for authentication and authorization. Authentication is done by 
 - Java 8+
 - MySQL 5.7+
   - database table name prefix: `auth_`.
+  - db user: `auth_dbuser`.
   - schema files: `/db`.
 
 ## Development Setup
