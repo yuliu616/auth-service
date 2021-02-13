@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <appender name="sout" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%gray(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight(%-5level) %gray( --- [%12thread]) %cyan(%-38logger{36}.%M):%L : %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="general" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>./log/auth-service.log</file>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <fileNamePattern>./logs/auth-service.%i.log</fileNamePattern>
+      <minIndex>0</minIndex>
+      <maxIndex>9</maxIndex>
+    </rollingPolicy>
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>16MB</maxFileSize>
+    </triggeringPolicy>
+
+    <encoder>
+      <pattern>%gray(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight(%-5level) %gray( --- [%12thread]) %cyan(%-38logger{36}.%M):%L : %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="debugLog" class="ch.qos.logback.core.FileAppender">
+    <file>./log/auth-service-debug.log</file>
+    <encoder>
+      <pattern>%gray(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight(%-5level) %gray( --- [%12thread]) %cyan(%-38logger{36}.%M):%L : %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="info">
+    <appender-ref ref="sout" />
+    <appender-ref ref="general" />
+  </root>
+
+  <logger level="debug" name="com.yu">
+    <appender-ref ref="debugLog" />
+  </logger>
+
+</configuration>
