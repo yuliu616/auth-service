@@ -2,7 +2,7 @@ server.port: 8080
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/hellodb?useUnicode=true&characterEncoding=UTF-8&useSSL=false&noAccessToProcedureBodies=true&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://hellodb:3306/hellodb?useUnicode=true&characterEncoding=UTF-8&useSSL=false&noAccessToProcedureBodies=true&allowPublicKeyRetrieval=true
     username: auth_dbuser
     password: pass1234
     hikari:
@@ -35,3 +35,19 @@ auth-service:
       -----END PUBLIC KEY-----
     token-valid-time-sec: 300
     token-issuer: com.yu
+
+---
+spring:
+  profiles: production
+  datasource:
+    username: auth_dbuser
+    password: <YOUR_DB_PASSWORD>
+auth-service:
+  options:
+    enable-debug-endpoint: false
+    accept-expired-auth-token: false
+  jwt:
+    private-key-PEM:
+      <YOUR PRIVATE KEY>
+    public-key-PEM:
+      <YOUR PUBLIC KEY>

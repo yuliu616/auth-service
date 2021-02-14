@@ -34,6 +34,10 @@ baseUri: http://localhost:8080/api
 
 /about:
   get:
+    queryParameters:
+      printLog:
+        type: boolean
+        default: false
     response:
       200:
         body:
@@ -50,7 +54,7 @@ baseUri: http://localhost:8080/api
   post:
     description: |
       registration(sign up) process, for new user to request for user record.
-    body: 
+    body:
       application/json:
         type: LoginDto
     response:
@@ -69,7 +73,7 @@ baseUri: http://localhost:8080/api
             }
 /login:
   post:
-    body: 
+    body:
       application/json:
         type: LoginDto
     response:
@@ -88,9 +92,9 @@ baseUri: http://localhost:8080/api
     get:
       description: |
         echo (and print to log) the claims of the authentication token.
-      responses: 
+      responses:
         200:
-          body: 
+          body:
             application/json:
               examples: |
                 {
@@ -122,7 +126,7 @@ baseUri: http://localhost:8080/api
       post:
         description: |
           bind(assign) role to the provided user.
-        body: 
+        body:
           application/json:
             type: Role[]
             example: |
@@ -140,7 +144,7 @@ baseUri: http://localhost:8080/api
       post:
         description: |
           unbind(remove) role assignment from the provided user.
-        body: 
+        body:
           application/json:
             type: Role[]
             example: |

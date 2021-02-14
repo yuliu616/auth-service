@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -23,12 +24,16 @@ public class AboutController {
     private static final Logger logger = LoggerFactory.getLogger(AboutController.class);
 
     @GetMapping("")
-    public Map<String, Object> healthCheck(){
-        logger.trace("healthCheck endpoint invoked");
-        logger.debug("healthCheck endpoint invoked");
-        logger.info("healthCheck endpoint invoked");
-        logger.warn("healthCheck endpoint invoked");
-        logger.error("healthCheck endpoint invoked");
+    public Map<String, Object> healthCheck(
+            @RequestParam(value = "printLog", defaultValue = "false") boolean printLog)
+    {
+        if (printLog) {
+            logger.trace("healthCheck endpoint invoked");
+            logger.debug("healthCheck endpoint invoked");
+            logger.info("healthCheck endpoint invoked");
+            logger.warn("healthCheck endpoint invoked");
+            logger.error("healthCheck endpoint invoked");
+        }
 
         HashMap<String, Object> map = new HashMap<>();
         map.put("apiVersion", this.apiVersion);

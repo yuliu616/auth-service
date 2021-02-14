@@ -11,8 +11,8 @@ A mirco-service for authentication and authorization. Authentication is done by 
 
 ## Environment (dependency)
 
-- Java 8+
-- MySQL 5.7+
+- Java 8+ (runtime)
+- MySQL 5.7+ (service = hellodb:3306)
   - database table name prefix: `auth_`.
   - db user: `auth_dbuser`.
   - schema files: `/db`.
@@ -70,4 +70,14 @@ java -jar target/auth-service-1.0.0.jar
 
 ```
 curl 'http://127.0.0.1:8080/api/about'
+```
+
+# Docker support
+
+## building docker image
+
+- after building the app (maven), run this:
+
+```sh
+docker build -t auth-service:1.0 .
 ```
