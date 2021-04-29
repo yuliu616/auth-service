@@ -81,7 +81,7 @@ describe('login', function(){
     let access_token = res.data.access_token;
 
     res = await axios.get(`${apiBaseUrl}/login/aboutMe`, {
-      headers: { Authorization: `Bearer: ${access_token}` }
+      headers: { Authorization: `Bearer ${access_token}` }
     });
     expect(res.data).is.an('object');
     expect(res.data.username).eq('tester1001');
@@ -106,7 +106,7 @@ describe('login', function(){
     data = {};
     // invoke refresh token to get new token
     res = await axios.post(`${apiBaseUrl}/login/refreshToken`, data, {
-      headers: { Authorization: `Bearer: ${access_token}` }
+      headers: { Authorization: `Bearer ${access_token}` }
     });
     expect(res.data).is.an('object');
     expect(res.data.access_token).to.not.eq(access_token);

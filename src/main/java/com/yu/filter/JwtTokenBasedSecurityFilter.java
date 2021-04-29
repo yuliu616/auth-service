@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 public class JwtTokenBasedSecurityFilter implements Filter {
 
     private static final String HEADER_AUTHORIZATION = "authorization";
-    private static final String HEADER_VALUE_BEARER_PREFIX = "Bearer: ";
+    private static final String HEADER_VALUE_BEARER_PREFIX = "Bearer ";
 
     private static final Logger logger = LoggerFactory.getLogger(JwtTokenBasedSecurityFilter.class);
 

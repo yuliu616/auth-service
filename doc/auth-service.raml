@@ -3,6 +3,8 @@ title: auth-service REST API
 version: 1.0.x
 description: |
   provide authentication by JWT token
+securitySchemes:
+  Bearer Token in this pattern: `Bearer ${access_token}`.
 types:
   LocalDate:
     description: date without time, formatted like this `2017-10-24`.
