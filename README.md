@@ -2,7 +2,7 @@
 
 > code name: `auth-service`.
 
-A mirco-service for authentication and authorization. Authentication is done by JWT token.
+A micro-service for authentication and authorization. Authentication is done by JWT token.
 
 ## Framework used
 
@@ -28,13 +28,13 @@ A mirco-service for authentication and authorization. Authentication is done by 
 
 Some key configuration parameter:
 
-- `authService.options.echoLoginInfo`: if true, print debug info for every login process.
-- `authService.options.enableDebugEndpoint`: if true, expose debug-use(high risk) endpoint.
-- `authService.options.acceptExpiredAuthToken`: if true, auth token expiry time will be ignored.
-- `authService.jwt.privateKey_PEM`: private key (in PEM) for signing JWT token.
-- `authService.jwt.publicKey_PEM`: public key (in PEM) for verifying JWT token.
-- `authService.jwt.tokenValidTimeSec`: how long will a token become expired (in seconds).
-- `authService.jwt.tokenIssuer`: token issuer (just a field).
+- `auth-service.options.echo-login-info`: if true, print debug info for every login process.
+- `auth-service.options.enable-debug-endpoint`: if true, expose debug-use(high risk) endpoint.
+- `auth-service.options.accept-expired-auth-token`: if true, auth token expiry time will be ignored.
+- `auth-service.jwt.private-key-PEM`: private key (in PEM) for signing JWT token.
+- `auth-service.jwt.public-key-PEM`: public key (in PEM) for verifying JWT token.
+- `auth-service.jwt.token-valid-time-sec`: how long will a token become expired (in seconds).
+- `auth-service.jwt.token-issuer`: token issuer (just a field).
 
 ## Debugging
 

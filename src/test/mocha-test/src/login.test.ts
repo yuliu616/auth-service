@@ -39,7 +39,7 @@ describe('login', function(){
     expect(res.data.token_type).eq('Bearer');
   });
 
-  it('rejected for newly created user with incorrect password ooo', async function(){
+  it('rejected for newly created user with incorrect password', async function(){
     let data: any = {
       username: 'tester1001',
       password: 'pass1234',
