@@ -11,7 +11,7 @@ types:
   DateTime:
     description: instant of time without time zone concept.
   Role:
-    description: refer to enum: com.yu.model.Role
+    description: refer to constants defined in `com.yu.model.auth.Role`.
   LoginDto:
     type: object
     examples:
@@ -30,6 +30,8 @@ types:
           "creationDate": "2020-11-30T02:43:11.856543Z",
           "lastUpdated": "2020-11-30T02:43:11.856543Z",
           "username": "user123",
+          "passwordHash": null,
+          "active": true,
         }
 
 baseUri: http://localhost:8080/api
@@ -158,3 +160,17 @@ baseUri: http://localhost:8080/api
           body:
             application/json:
               type: User
+    /list:
+      get:
+        description: |
+          get list of role bound to the provided user.
+        responses:
+          200:
+            body:
+              application/json:
+                type: Role[]
+                examples: |
+                  [
+                    "USER_ADMIN",
+                    "GENERAL_USER"
+                  ]

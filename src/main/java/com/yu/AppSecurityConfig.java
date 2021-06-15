@@ -55,6 +55,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                     .hasAnyAuthority(Role.ROOT_ADMIN, Role.ROLE_ADMIN)
                 .antMatchers(apiBaseUrl+"/role/*/unbind")
                     .hasAnyAuthority(Role.ROOT_ADMIN, Role.ROLE_ADMIN)
+                .antMatchers(apiBaseUrl+"/role/*/list")
+                    .hasAnyAuthority(Role.ROOT_ADMIN, Role.ROLE_ADMIN)
                 .anyRequest().denyAll()
         ;
 //        http.authorizeRequests().anyRequest().permitAll();
