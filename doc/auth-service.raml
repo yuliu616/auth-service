@@ -123,8 +123,8 @@ baseUri: http://localhost:8080/api
                   "expires_in": 300
                 }
 /role:
-  /bind:
-    /{userId}:
+  /{userId}:
+    /bind:
       post:
         description: |
           bind(assign) role to the provided user.
@@ -141,8 +141,7 @@ baseUri: http://localhost:8080/api
           body:
             application/json:
               type: User
-  /unbind:
-    /{userId}:
+    /unbind:
       post:
         description: |
           unbind(remove) role assignment from the provided user.
