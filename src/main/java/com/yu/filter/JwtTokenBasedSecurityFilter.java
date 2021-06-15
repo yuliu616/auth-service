@@ -52,7 +52,8 @@ public class JwtTokenBasedSecurityFilter implements Filter {
                     logger.debug("token is invalid: {}", token);
                 } else {
 //                    logger.debug("token verified good: {}", verifiedToken.getPayload().toString());
-                    Authentication auth = buildAuthObjForSecurity(verifiedToken, jwtTokenController);
+                    UsernamePasswordAuthenticationToken auth = buildAuthObjForSecurity(verifiedToken, jwtTokenController);
+                    auth.setDetails(token);
                     SecurityContext securityContext = SecurityContextHolder.getContext();
                     securityContext.setAuthentication(auth);
                 }
@@ -70,7 +71,7 @@ public class JwtTokenBasedSecurityFilter implements Filter {
         return jwtTokenController;
     }
 
-    private Authentication buildAuthObjForSecurity(
+    private UsernamePasswordAuthenticationToken buildAuthObjForSecurity(
             SignedJWT verifiedToken,
             JwtTokenController jwtTokenController)
     {
@@ -79,7 +80,7 @@ public class JwtTokenBasedSecurityFilter implements Filter {
             String username = jwtTokenController.getUsernameInToken(claimsSet);
             String[] roleList = jwtTokenController.getRoleListInToken(claimsSet);
 //            logger.debug("user[{}] having roles: {}", username, roleList);
-            Authentication auth = new UsernamePasswordAuthenticationToken(
+            UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                     username, null, //no password
                     Arrays.asList(roleList) //make the user have this role granted.
                             .stream()
