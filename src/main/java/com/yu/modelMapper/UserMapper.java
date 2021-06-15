@@ -1,7 +1,7 @@
 package com.yu.modelMapper;
 
 import com.yu.model.IntegerId;
-import com.yu.model.User;
+import com.yu.model.auth.User;
 import org.apache.ibatis.annotations.Param;
 
 /**

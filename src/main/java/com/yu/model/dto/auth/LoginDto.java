@@ -1,4 +1,4 @@
-package com.yu.model.dto;
+package com.yu.model.dto.auth;
 
 import javax.validation.constraints.NotBlank;
 

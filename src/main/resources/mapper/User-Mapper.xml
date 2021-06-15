@@ -11,7 +11,7 @@
     ${alias}.is_active as isActive</sql>
   <select id="findUserById"
           parameterType="String"
-          resultType="com.yu.model.User">
+          resultType="com.yu.model.auth.User">
     SELECT id,
     <include refid="userColumns">
       <property name="alias" value="user" />
@@ -19,7 +19,7 @@
     FROM auth_user as user
     WHERE user.id = #{id}
   </select>
-  <select id="findUserWithPasswordMatched" resultType="com.yu.model.User">
+  <select id="findUserWithPasswordMatched" resultType="com.yu.model.auth.User">
     SELECT id
     FROM auth_user as user
     WHERE user.username = #{username}
@@ -34,7 +34,7 @@
     insert into auth_user_id values ()
   </insert>
   <insert id="insertUserWithModel"
-          parameterType="com.yu.model.User">
+          parameterType="com.yu.model.auth.User">
     insert auth_user (id, version,
       username, passwordHash, is_active)
     values (#{u.id}, 1,

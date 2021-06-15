@@ -1,7 +1,7 @@
 package com.yu;
 
 import com.yu.filter.JwtTokenBasedSecurityFilter;
-import com.yu.model.Role;
+import com.yu.model.auth.Role;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

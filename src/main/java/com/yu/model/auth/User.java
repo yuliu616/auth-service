@@ -1,4 +1,6 @@
-package com.yu.model;
+package com.yu.model.auth;
+
+import com.yu.model.IHasId;
 
 import java.time.Instant;
 

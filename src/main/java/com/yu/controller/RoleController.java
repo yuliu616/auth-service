@@ -1,8 +1,8 @@
 package com.yu.controller;
 
 import com.yu.exception.RecordNotFoundException;
-import com.yu.model.Role;
-import com.yu.model.User;
+import com.yu.model.auth.Role;
+import com.yu.model.auth.User;
 import com.yu.modelMapper.UserMapper;
 import com.yu.modelMapper.UserRoleMapper;
 import org.slf4j.Logger;

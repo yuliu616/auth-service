@@ -1,7 +1,7 @@
 package com.yu.controller;
 
 import com.yu.exception.UnhandledException;
-import com.yu.model.dto.LoginDto;
+import com.yu.model.dto.auth.LoginDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

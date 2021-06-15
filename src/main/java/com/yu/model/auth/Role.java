@@ -1,4 +1,4 @@
-package com.yu.model;
+package com.yu.model.auth;
 
 /**
  * permission/definition of a role is defined by service themselves,

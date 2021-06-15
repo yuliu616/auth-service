@@ -1,11 +1,10 @@
 package com.yu.controller;
 
 import com.yu.exception.AuthenticationFailureException;
-import com.yu.model.Role;
-import com.yu.model.User;
-import com.yu.model.dto.AuthRefreshDto;
-import com.yu.model.dto.AuthResultDto;
-import com.yu.model.dto.LoginDto;
+import com.yu.model.auth.User;
+import com.yu.model.dto.auth.AuthRefreshDto;
+import com.yu.model.dto.auth.AuthResultDto;
+import com.yu.model.dto.auth.LoginDto;
 import com.yu.modelMapper.UserMapper;
 import com.yu.modelMapper.UserRoleMapper;
 import org.slf4j.Logger;

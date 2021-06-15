@@ -2,8 +2,8 @@ package com.yu.controller;
 
 import com.yu.exception.RecordInsertionFailException;
 import com.yu.exception.SecurityRiskException;
-import com.yu.model.User;
-import com.yu.model.dto.LoginDto;
+import com.yu.model.auth.User;
+import com.yu.model.dto.auth.LoginDto;
 import com.yu.modelMapper.UserMapper;
 import com.yu.util.MyBatisUtil;
 import org.slf4j.Logger;
