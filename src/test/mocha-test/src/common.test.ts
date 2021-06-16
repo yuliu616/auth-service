@@ -14,7 +14,7 @@ let apiBaseUrl = 'http://127.0.0.1:8080/api';
 
 let options = {
   // echoReq: 'simple',
-  echoReq: false,
+  echoReq: 'none',
   echoRes: false,
   echoErrorRes: false,
 };
