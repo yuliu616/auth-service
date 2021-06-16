@@ -81,3 +81,9 @@ curl 'http://127.0.0.1:8080/api/1.0/about'
 ```sh
 docker build -t auth-service:1.0 .
 ```
+
+## mounting points in docker
+
+- app config file: `/usr/src/app/application.yaml`
+- logger config file: `/usr/src/app/logback.xml`
+- log folder (output): `/usr/src/app/log`
