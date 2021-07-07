@@ -69,7 +69,7 @@ java -jar target/auth-service-1.0.0.jar
 ## Health checking
 
 ```
-curl 'http://127.0.0.1:8080/api/about'
+curl 'http://127.0.0.1:8080/api/1.0/about'
 ```
 
 # Docker support

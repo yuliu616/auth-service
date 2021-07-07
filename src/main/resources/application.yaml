@@ -11,7 +11,8 @@ spring:
 auth-service:
   service-name: auth-service
   api-version: 1.0
-  api-base-url: /api
+  # NEVER OVERRIDE THIS VALUE IN RUNTIME
+  api-base-url: /api/1.0
   model-mapper-location: classpath:mapper/*-Mapper.xml
   options:
     echo-login-info: true

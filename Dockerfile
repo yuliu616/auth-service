@@ -7,6 +7,7 @@ FROM openjdk:15.0.2-oraclelinux7
 # - log folder (output): /usr/src/app/log
 
 ENV PORT=8080
+ENV API_VERSION=1.0
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -19,7 +20,7 @@ COPY src/main/resources/logback.xml /usr/src/app/
 
 EXPOSE ${PORT}
 HEALTHCHECK --interval=10s --timeout=5s \
-  CMD curl -f http://127.0.0.1:${PORT}/api/about || exit 1
+  CMD curl -f http://127.0.0.1:${PORT}/api/${API_VERSION}/about || exit 1
 
 CMD java -jar /usr/src/app/app.jar \
   --spring.config.location=classpath:/application.yaml,file:/usr/src/app/application.yaml \
