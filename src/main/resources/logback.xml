@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <property name="LOG_PATTERN"
+            value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight(%-5level) %gray( --- [%12thread]) %cyan(%-38logger{36}.%M):%L : %msg%n"/>
+
   <appender name="sout" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>%gray(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight(%-5level) %gray( --- [%12thread]) %cyan(%-38logger{36}.%M):%L : %msg%n</pattern>
+      <pattern>${LOG_PATTERN}</pattern>
     </encoder>
   </appender>
 
@@ -19,14 +24,14 @@
     </triggeringPolicy>
 
     <encoder>
-      <pattern>%gray(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight(%-5level) %gray( --- [%12thread]) %cyan(%-38logger{36}.%M):%L : %msg%n</pattern>
+      <pattern>${LOG_PATTERN}</pattern>
     </encoder>
   </appender>
 
   <appender name="debugLog" class="ch.qos.logback.core.FileAppender">
     <file>./log/auth-service-debug.log</file>
     <encoder>
-      <pattern>%gray(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight(%-5level) %gray( --- [%12thread]) %cyan(%-38logger{36}.%M):%L : %msg%n</pattern>
+      <pattern>${LOG_PATTERN}</pattern>
     </encoder>
   </appender>
 
