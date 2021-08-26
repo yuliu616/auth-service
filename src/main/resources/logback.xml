@@ -15,7 +15,7 @@
     <file>./log/auth-service.log</file>
 
     <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-      <fileNamePattern>./logs/auth-service.%i.log</fileNamePattern>
+      <fileNamePattern>./log/auth-service.%i.log</fileNamePattern>
       <minIndex>0</minIndex>
       <maxIndex>9</maxIndex>
     </rollingPolicy>
