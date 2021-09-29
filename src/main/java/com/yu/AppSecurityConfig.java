@@ -38,6 +38,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers(apiBaseUrl+"/debug/**").permitAll();
         }
 
+        // actuator endpoints
+        http.authorizeRequests()
+                .antMatchers("/actuator/**").permitAll();
+
         // access control for endpoints
         http
             .authorizeRequests()
