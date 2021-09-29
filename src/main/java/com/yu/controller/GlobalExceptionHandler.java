@@ -58,7 +58,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(UnhandledException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorCodeDto unknownError(UnhandledException exception){
         logger.warn("unknownError: {}", exception.getMessage(), exception);
         return new ErrorCodeDto(ERROR_UNKNOWN_ERROR);
