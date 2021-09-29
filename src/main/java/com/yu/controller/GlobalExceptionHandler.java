@@ -8,6 +8,7 @@ import com.yu.exception.RecordNotFoundException;
 import com.yu.exception.SecurityRiskException;
 import com.yu.exception.UnhandledException;
 import com.yu.model.dto.ErrorCodeDto;
+import feign.FeignException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -111,6 +112,13 @@ public class GlobalExceptionHandler {
     public ErrorCodeDto httpBodyParsingError(org.springframework.http.converter.HttpMessageNotReadableException exception){
         logger.warn("httpBodyParsingError: {}", exception.getMessage(), exception);
         return new ErrorCodeDto(ERROR_INVALID_USE_ERROR);
+    }
+
+    @ExceptionHandler(FeignException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorCodeDto feignCallFailure(FeignException exception){
+        logger.warn("feignCallFailure: {}", exception.getMessage(), exception);
+        return new ErrorCodeDto(ERROR_INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(AuthenticationFailureException.class)
