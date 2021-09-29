@@ -41,6 +41,9 @@ baseUri: http://localhost:8080/api/1.0
     queryParameters:
       printLog:
         type: boolean
+        default: true
+      printLogTest:
+        type: boolean
         default: false
     response:
       200:
@@ -51,6 +54,7 @@ baseUri: http://localhost:8080/api/1.0
               {
                   "serviceName": "auth-service"
                   "apiVersion": "1.0",
+                  "apiBaseUrl": "/api/1.0",
                   "currentTime": "2020-11-30T02:43:11.856543Z",
                   "currentDate": "2020-11-30",
               }

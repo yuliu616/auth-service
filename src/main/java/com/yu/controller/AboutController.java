@@ -21,22 +21,29 @@ public class AboutController {
     @Value("${auth-service.api-version}")
     protected String apiVersion;
 
+    @Value("${auth-service.api-base-url}")
+    protected String apiBaseUrl;
+
     private static final Logger logger = LoggerFactory.getLogger(AboutController.class);
 
     @GetMapping("")
     public Map<String, Object> healthCheck(
-            @RequestParam(value = "printLog", defaultValue = "false") boolean printLog)
+            @RequestParam(value = "printLogTest", defaultValue = "false") boolean printLogTest,
+            @RequestParam(value = "printLog", defaultValue = "true") boolean printLog)
     {
-        if (printLog) {
+        if (printLogTest) {
             logger.trace("healthCheck endpoint invoked");
             logger.debug("healthCheck endpoint invoked");
             logger.info("healthCheck endpoint invoked");
             logger.warn("healthCheck endpoint invoked");
             logger.error("healthCheck endpoint invoked");
+        } else if (printLog) {
+            logger.info("healthCheck endpoint invoked");
         }
 
         HashMap<String, Object> map = new HashMap<>();
         map.put("apiVersion", this.apiVersion);
+        map.put("apiBaseUrl", this.apiBaseUrl);
         map.put("serviceName", this.serviceName);
         map.put("currentTime", java.time.Instant.now());
         map.put("currentDate", java.time.LocalDate.now());
