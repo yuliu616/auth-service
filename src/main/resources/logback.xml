@@ -3,7 +3,7 @@
 
   <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
   <property name="LOG_PATTERN"
-            value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight(%-5level) %gray( --- [%12thread]) %cyan(%-38logger{36}.%M):%L : %msg%n"/>
+            value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}) %clr(${LOG_LEVEL_PATTERN:-%5p}) %gray( --- [%12thread]) %cyan(%-38logger{36}.%M):%L : %msg%n"/>
 
   <appender name="sout" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>

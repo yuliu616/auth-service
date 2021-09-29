@@ -2,6 +2,8 @@ server.port: 8080
 management.endpoints.web.exposure.include: health,auditevents,beans,caches,conditions,configprops,env,flyway,heapdump,httptrace,info,integrationgraph,jolokia,logfile,loggers,liquibase,metrics,mappings,prometheus,quartz,scheduledtasks,sessions,shutdown,startup,threaddump
 
 spring:
+  application:
+    name: auth-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://hellodb:3306/hellodb?useUnicode=true&characterEncoding=UTF-8&useSSL=false&noAccessToProcedureBodies=true&allowPublicKeyRetrieval=true
@@ -10,6 +12,9 @@ spring:
     hikari:
       maximum-pool-size: 100
       connection-timeout: 6000
+  zipkin:
+    enabled: true
+    baseUrl: http://127.0.0.1:9411
 
 auth-service:
   service-name: auth-service
