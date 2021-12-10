@@ -43,6 +43,9 @@ auth-service:
     echo-login-info: true
     enable-debug-endpoint: true
     accept-expired-auth-token: false
+    model:
+      user:
+        id-generation-strategy: ID_TABLE
   password:
     charset: UTF-8
     hash-algo: SHA-256

@@ -27,6 +27,9 @@ public class SignUpController {
     @Autowired
     protected PasswordController passwordController;
 
+    @Autowired
+    protected IdGenerationController idGenerationController;
+
     private static final Logger logger = LoggerFactory.getLogger(SignUpController.class);
 
     @Transactional
@@ -38,8 +41,7 @@ public class SignUpController {
         if (!dto.getPassword().trim().equals(dto.getPassword())) {
             throw new SecurityRiskException("password should not be started/ended with space char");
         }
-        User newUser = MyBatisUtil.generateIdForModel(new User(),
-                o->this.userMapper.generateUserId(o));
+        User newUser = idGenerationController.fillWithGeneratedId(new User());
         newUser.setUsername(dto.getUsername());
         String passwordHash = passwordController.hashPassword(dto.getPassword(), dto);
         newUser.setPasswordHash(passwordHash);
