@@ -34,10 +34,10 @@ eureka:
 
 auth-service:
   service-name: auth-service
-  api-version: 1.0
+  api-version: 1.1
   # NEVER OVERRIDE THIS VALUE IN RUNTIME
-  api-base-url: /api/1.0
-  version-description: spring cloud support.
+  api-base-url: /api/1.1
+  version-description: id generation strategy support.
   model-mapper-location: classpath:mapper/*-Mapper.xml
   options:
     echo-login-info: true

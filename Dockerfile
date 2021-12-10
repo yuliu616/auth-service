@@ -7,14 +7,14 @@ FROM openjdk:15.0.2-oraclelinux7
 # - log folder (output): /usr/src/app/log
 
 ENV PORT=8080
-ENV API_VERSION=1.0
+ENV API_VERSION=1.1
 
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Bundle app source
-COPY target/auth-service-1.0.0.jar /usr/src/app/app.jar
+COPY target/auth-service-1.1.0.jar /usr/src/app/app.jar
 COPY src/main/resources/application.yaml /usr/src/app/
 COPY src/main/resources/logback.xml /usr/src/app/
 
@@ -27,4 +27,4 @@ CMD java -jar /usr/src/app/app.jar \
   --logging.config=/usr/src/app/logback.xml
 
 # build with this:
-# > docker build -t auth-service:1.0 .
+# > docker build -t auth-service:1.1 .
