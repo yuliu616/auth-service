@@ -23,7 +23,11 @@ let options = {
 
 axios.interceptors.request.use(function(req) {
   if (options.echoReq == 'simple') {
-    console.debug(Colors.FgCyan, `     ${req.method.toUpperCase()} ${req.url.replace(apiBaseUrl, '')}`);
+    if (req.params && Object.keys(req.params).length > 0) {
+      console.debug(Colors.FgCyan, `     ${req.method.toUpperCase()} ${req.url.replace(apiBaseUrl, '')} qsParams=${JSON.stringify(req.params)}`);
+    } else {
+      console.debug(Colors.FgCyan, `     ${req.method.toUpperCase()} ${req.url.replace(apiBaseUrl, '')}`);
+    }
   }
   return req;
 });
