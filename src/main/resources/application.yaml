@@ -6,15 +6,15 @@ spring:
     name: auth-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://hellodb:3306/hellodb?useUnicode=true&characterEncoding=UTF-8&useSSL=false&noAccessToProcedureBodies=true&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://mysql:3306/hellodb?useUnicode=true&characterEncoding=UTF-8&useSSL=false&noAccessToProcedureBodies=true&allowPublicKeyRetrieval=true
     username: auth_dbuser
     password: pass1234
     hikari:
       maximum-pool-size: 100
       connection-timeout: 6000
   zipkin:
-    enabled: true
-    baseUrl: http://127.0.0.1:9411
+    enabled: false
+    baseUrl: http://zipkin:9411
   cloud:
     loadbalancer:
       ribbon:
@@ -28,9 +28,9 @@ spring:
         repeat-health-check: true
 eureka:
   client:
-    enabled: true # default = true
+    enabled: false # default = true
     service-url:
-      defaultZone: http://127.0.0.1:8761/eureka/
+      defaultZone: http://eureka:8761/eureka/
 
 auth-service:
   service-name: auth-service
@@ -77,3 +77,11 @@ auth-service:
       <YOUR PRIVATE KEY>
     public-key-PEM:
       <YOUR PUBLIC KEY>
+---
+spring:
+  profiles: enable_spring_cloud
+  zipkin:
+    enabled: true
+eureka:
+  client:
+    enabled: true
