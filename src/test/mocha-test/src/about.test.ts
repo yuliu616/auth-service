@@ -18,8 +18,10 @@ describe('about', function(){
     expect(res.data).is.an('object');
     expect(res.data.serviceName).eq('auth-service');
     expect(res.data.apiVersion).eq('1.0');
-    expect(res.data.currentDate).to.match(localDatePattern);
-    expect(res.data.currentTime).to.match(dateTimeAndMsNoZonePattern);
+    expect(res.data.currentDate).to.match(localDatePattern).that.exist;
+    expect(res.data.currentTime).to.match(dateTimeAndMsNoZonePattern).that.exist;
+    expect(res.data.instanceRandId).to.not.be.undefined;
+    expect(res.data.description).to.have.length.at.least(1);
   });
 
 });

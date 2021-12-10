@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 @RequestMapping("${auth-service.api-base-url}/about")
 @RestController
 public class AboutController {
+
+    private int randomId = new Random().nextInt(10000)%10000 +10000;
 
     @Value("${auth-service.service-name}")
     protected String serviceName;
@@ -23,6 +26,12 @@ public class AboutController {
 
     @Value("${auth-service.api-base-url}")
     protected String apiBaseUrl;
+
+    @Value("${auth-service.version-description}")
+    protected String versionDescription;
+
+    @Value("${auth-service.options.enable-debug-endpoint}")
+    protected boolean enableDebugEndpoint;
 
     private static final Logger logger = LoggerFactory.getLogger(AboutController.class);
 
@@ -47,6 +56,10 @@ public class AboutController {
         map.put("serviceName", this.serviceName);
         map.put("currentTime", java.time.Instant.now());
         map.put("currentDate", java.time.LocalDate.now());
+        if (enableDebugEndpoint) {
+            map.put("description", this.versionDescription);
+            map.put("instanceRandId", this.randomId);
+        }
         return map;
     }
 

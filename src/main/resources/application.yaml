@@ -37,6 +37,7 @@ auth-service:
   api-version: 1.0
   # NEVER OVERRIDE THIS VALUE IN RUNTIME
   api-base-url: /api/1.0
+  version-description: spring cloud support.
   model-mapper-location: classpath:mapper/*-Mapper.xml
   options:
     echo-login-info: true
